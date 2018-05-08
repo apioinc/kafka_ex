@@ -385,7 +385,7 @@ defmodule KafkaEx.Server do
       end
       # credo:disable-for-next-line Credo.Check.Refactor.FunctionArity
       def retrieve_metadata(brokers, correlation_id, sync_timeout, topic, retry, _error_code) do
-        Logger.log(:debug, "Brokers #{inspect brokers}")
+        Logger.log(:error, "Brokers #{inspect brokers}")
         metadata_request = Metadata.create_request(correlation_id, @client_id, topic)
         data = first_broker_response(metadata_request, brokers, sync_timeout)
         response = case data do
